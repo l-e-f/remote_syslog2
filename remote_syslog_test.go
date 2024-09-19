@@ -54,6 +54,15 @@ func TestFilters(t *testing.T) {
 	}
 }
 
+func TestTrimPrefix(t *testing.T) {
+	assert := assert.New(t)
+
+	assert.Equal("foo", trimPrefix("foo", ""))
+	assert.Equal("foo", trimPrefix("foo", "bar"))
+	assert.Equal("foo", trimPrefix("barfoo", "bar"))
+	assert.Equal("foo", trimPrefix("testbarfoo", "bar"))
+}
+
 func TestNewFileSeek(t *testing.T) {
 	assert := assert.New(t)
 

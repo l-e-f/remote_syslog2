@@ -1,3 +1,9 @@
+# This repo
+
+This repo is a fork of remote_syslog2 that is designed to filter out the information that is prepended to log lines by the CRI logging format. The original README is preserved below.
+
+The prebuilt docker image is available at `ellief/remote_syslog2`.
+
 # remote_syslog2
 
 [![Download remote_syslog2](https://papertrail.github.io/remote_syslog2/images/download.png)][releases]

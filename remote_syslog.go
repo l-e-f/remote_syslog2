@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -132,6 +133,7 @@ func (s *Server) tailOne(file, tag string, whence int) {
 			}
 
 			l := line.String()
+			l = trimPrefix(l, "stdout F ")
 
 			if !matchExps(l, s.config.ExcludePatterns) {
 
@@ -221,6 +223,12 @@ func matchExps(value string, expressions []*regexp.Regexp) bool {
 		}
 	}
 	return false
+}
+
+func trimPrefix(value string, match string) string {
+	_, after, found := strings.Cut(value, match)
+	if (!found) {return value}
+	return after
 }
 
 func main() {
